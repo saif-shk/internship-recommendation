@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Profile - PM Internship AI</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-content">
+      <div class="logo">
+        <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #6C63FF, #4ecdc4);
+                    border-radius: 12px; display: flex; align-items: center; justify-content: center;
+                    font-size: 1.4rem; color:#fff;">🎯</div>
+        <h1>PM Internship AI</h1>
+      </div>
+      <div class="header-actions">
+        <a href="/" class="btn btn-secondary">← Home</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Profile Form -->
+  <main class="container">
+    <div class="card form-section">
+      <div style="text-align:center; margin-bottom: 2rem;">
+        <h1>👤 Create Your Profile</h1>
+        <p style="font-size:1.1rem; color:var(--muted);">
+          Fill in your details to get personalized internship recommendations.
+        </p>
+      </div>
+
+      <form action="/create-profile" method="post">
+        <!-- Basic Information -->
+        <h2>📋 Basic Information</h2>
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="name">Full Name *</label>
+            <input type="text" id="name" name="name" class="form-control" required placeholder="Enter your name">
+          </div>
+          <div class="form-group">
+            <label for="age">Age *</label>
+            <input type="number" id="age" name="age" class="form-control" required min="16" max="35" placeholder="16–35">
+          </div>
+        </div>
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="education_level">Education Level *</label>
+            <select id="education_level" name="education_level" class="form-control" required>
+              <option value="">Select</option>
+              <option value="high_school">High School</option>
+              <option value="diploma">Diploma</option>
+              <option value="undergraduate">Undergraduate</option>
+              <option value="postgraduate">Postgraduate</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="field_of_study">Field of Study *</label>
+            <input type="text" id="field_of_study" name="field_of_study" class="form-control" required placeholder="e.g., Computer Science">
+          </div>
+        </div>
+
+        <!-- Skills & Interests -->
+        <h2>🎯 Skills & Interests</h2>
+        <div class="form-grid">
+          <div class="form-group full-width">
+            <label for="skills">Skills *</label>
+            <input type="text" id="skills" name="skills" class="form-control" required placeholder="e.g., Python, Excel, Design">
+            <div class="help-text">Separate skills with commas</div>
+          </div>
+          <div class="form-group full-width">
+            <label for="interests">Career Interests *</label>
+            <input type="text" id="interests" name="interests" class="form-control" required placeholder="e.g., AI, Marketing, Finance">
+            <div class="help-text">Separate interests with commas</div>
+          </div>
+        </div>
+
+        <!-- Location & Preferences -->
+        <h2>📍 Location & Preferences</h2>
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="location">Current Location *</label>
+            <input type="text" id="location" name="location" class="form-control" required placeholder="e.g., Mumbai">
+          </div>
+          <div class="form-group">
+            <label for="preferred_locations">Preferred Locations</label>
+            <input type="text" id="preferred_locations" name="preferred_locations" class="form-control" placeholder="e.g., Remote, Pune">
+          </div>
+        </div>
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="experience_level">Experience Level</label>
+            <select id="experience_level" name="experience_level" class="form-control">
+              <option value="beginner" selected>Beginner</option>
+              <option value="intermediate">Intermediate</option>
+              <option value="advanced">Advanced</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="language_preference">Language Preference</label>
+            <select id="language_preference" name="language_preference" class="form-control">
+              <option value="english" selected>English</option>
+              <option value="hindi">Hindi</option>
+              <option value="both">Both</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Submit -->
+        <div style="text-align:center; margin-top:2rem;">
+          <button type="submit" class="btn btn-primary">🚀 Get My Recommendations</button>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 PM Internship Recommendation System</p>
+  </footer>
+</body>
+</html>

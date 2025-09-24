@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recommended Internships - PM Internship AI</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-content">
+      <div class="logo">
+        <div style="width:50px; height:50px; background:linear-gradient(135deg,#667eea,#764ba2);
+                    border-radius:12px; display:flex; align-items:center; justify-content:center;
+                    font-size:1.5rem;">🎯</div>
+        <h1>PM Internship AI</h1>
+      </div>
+      <div style="display:flex; gap:1rem;">
+        <a href="/" class="btn btn-secondary">← Home</a>
+        <a href="/profile" class="btn btn-secondary">Update Profile</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container">
+    <div class="recommendations-header" style="text-align:center; margin-bottom:2rem;">
+      <h1>✨ Recommended Internships</h1>
+      <p>Based on your profile, here are the best opportunities for you 🚀</p>
+    </div>
+
+    {% if recommendations %}
+    <div class="recommendations-grid">
+      {% for rec in recommendations %}
+      <div class="recommendation-card">
+        <div class="match-score">{{ rec.match_score }}%</div>
+
+        <h2 class="internship-title">{{ rec.internship.title }}</h2>
+        <p class="company-name">{{ rec.internship.company }}</p>
+
+        <div class="internship-details">
+          <div class="detail-item"><strong>📍 Location:</strong> {{ rec.internship.location }}</div>
+          <div class="detail-item"><strong>⏳ Duration:</strong> {{ rec.internship.duration }}</div>
+          <div class="detail-item"><strong>💰 Stipend:</strong> {{ rec.internship.stipend }}</div>
+          <div class="detail-item"><strong>🗓 Deadline:</strong> {{ rec.internship.application_deadline }}</div>
+          {% if rec.internship.remote_option %}
+            <div class="detail-item" style="color:#4ecdc4;">🏠 Remote Available</div>
+          {% endif %}
+        </div>
+
+        <p class="internship-description">{{ rec.internship.description }}</p>
+
+        {% if rec.match_reasons %}
+        <div class="match-reasons">
+          <h4>✅ Why this matches you</h4>
+          <div class="reasons-list">
+            {% for reason in rec.match_reasons %}
+              <span class="reason-tag">{{ reason }}</span>
+            {% endfor %}
+          </div>
+        </div>
+        {% endif %}
+
+        <div style="text-align:center; margin-top:1.5rem;">
+          <button class="btn btn-primary apply-btn" data-id="{{ rec.internship.id }}">
+            🚀 Apply Now
+          </button>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+      <p style="text-align:center; font-size:1.1rem; color:var(--muted); margin-top:2rem;">
+        🙁 No matches found. Try updating your profile with more skills.
+      </p>
+    {% endif %}
+  </main>
+
+  <!-- Scripts -->
+  <script src="/static/script.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        initializeApplyButtons();
+    });
+  </script>
+</body>
+</html>

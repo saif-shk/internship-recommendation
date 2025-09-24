@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Applications - PM Internship AI</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <style>
+    /* Extra tweaks just for Applications page */
+    .application-card {
+      background: var(--card);
+      border-radius: 16px;
+      padding: 1.8rem;
+      margin-bottom: 1.8rem;
+      box-shadow: var(--shadow);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .application-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+    }
+    .application-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+      color: var(--text);
+    }
+    .application-company {
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+    .application-details {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0.8rem;
+      margin-bottom: 1rem;
+    }
+    .detail-label {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+    .detail-value {
+      font-size: 1rem;
+      color: var(--text);
+    }
+    .application-description {
+      font-size: 0.95rem;
+      line-height: 1.5;
+      color: var(--text);
+      margin-top: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-content">
+      <div class="logo">
+        <div style="width:50px; height:50px; background:linear-gradient(135deg,#667eea,#764ba2);
+                    border-radius:12px; display:flex; align-items:center; justify-content:center;
+                    font-size:1.5rem;">🎯</div>
+        <h1>PM Internship AI</h1>
+      </div>
+      <div style="display:flex; gap:1rem;">
+        <a href="/" class="btn btn-secondary">← Home</a>
+        <a href="/profile" class="btn btn-secondary">Update Profile</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container">
+    <div style="text-align:center; margin-bottom:2rem;">
+      <h1 style="font-size:2rem; margin-bottom:0.5rem;">✅ My Applications</h1>
+      <p style="font-size:1.1rem; color:var(--muted);">Here are the internships you’ve applied to:</p>
+    </div>
+
+    {% if applications %}
+      {% for app in applications %}
+      <div class="application-card">
+        <div class="application-title">{{ app.title }}</div>
+        <div class="application-company">{{ app.company }}</div>
+
+        <div class="application-details">
+          <div>
+            <div class="detail-label">📍 Location</div>
+            <div class="detail-value">
+              {{ app.location }}
+              {% if app.remote_option %}
+                <span style="color:#4ecdc4; font-size:0.9rem;">(Remote OK)</span>
+              {% endif %}
+            </div>
+          </div>
+          <div>
+            <div class="detail-label">⏳ Duration</div>
+            <div class="detail-value">{{ app.duration }}</div>
+          </div>
+          <div>
+            <div class="detail-label">💰 Stipend</div>
+            <div class="detail-value">{{ app.stipend }}</div>
+          </div>
+          <div>
+            <div class="detail-label">🗓 Deadline</div>
+            <div class="detail-value">{{ app.application_deadline }}</div>
+          </div>
+        </div>
+
+        <p class="application-description">{{ app.description }}</p>
+      </div>
+      {% endfor %}
+    {% else %}
+      <p style="text-align:center; font-size:1.1rem; color:var(--muted); margin-top:2rem;">
+        🙁 You haven’t applied to any internships yet.
+      </p>
+    {% endif %}
+
+    <div style="text-align:center; margin-top:2.5rem;">
+      <a href="/internships" class="btn btn-primary">🌍 Browse More Internships</a>
+    </div>
+  </main>
+</body>
+</html>

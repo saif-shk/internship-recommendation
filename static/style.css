@@ -1,0 +1,250 @@
+/* =========================
+   Global Reset
+========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* =========================
+   Theme Variables
+========================= */
+:root {
+  /* Light mode palette */
+  --bg: #f8faff;
+  --card: #ffffff;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --accent-1: #4f46e5;   /* Indigo */
+  --accent-2: #06b6d4;   /* Cyan */
+  --accent-3: #10b981;   /* Green */
+  --radius: 14px;
+  --shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  --transition: all 0.25s ease;
+}
+
+:root[data-theme="dark"] {
+  /* Dark mode palette */
+  --bg: #0d1117;
+  --card: #161b22;
+  --text: #e6edf3;
+  --muted: #9ca3af;
+  --shadow: 0 8px 28px rgba(0, 0, 0, 0.6);
+}
+
+/* =========================
+   Body & Typography
+========================= */
+body {
+  font-family: 'Inter', Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  font-size: 16px;
+  transition: var(--transition);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+/* =========================
+   Header
+========================= */
+.header {
+  background: var(--card);
+  box-shadow: var(--shadow);
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  transition: var(--transition);
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.logo-text svg {
+  display: block;
+  width: auto;
+  height: 36px;
+}
+
+
+.theme-toggle {
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius);
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
+  color: #fff;
+  transition: var(--transition);
+}
+.theme-toggle:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+/* =========================
+   Hero Section
+========================= */
+.hero {
+  text-align: center;
+  padding: 5rem 1rem;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  color: var(--muted);
+  max-width: 700px;
+  margin: 0 auto 2rem;
+}
+
+.hero-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+}
+
+/* =========================
+   Buttons
+========================= */
+.btn {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  border-radius: var(--radius);
+  font-weight: 600;
+  text-decoration: none;
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
+  color: #fff;
+  box-shadow: var(--shadow);
+}
+.btn-primary:hover {
+  transform: translateY(-3px);
+}
+
+.btn-secondary {
+  border: 2px solid var(--accent-1);
+  color: var(--accent-1);
+  background: transparent;
+}
+.btn-secondary:hover {
+  background: var(--accent-1);
+  color: #fff;
+}
+
+/* =========================
+   Cards
+========================= */
+.card,
+.recommendation-card {
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.8rem;
+  transition: var(--transition);
+}
+
+.card:hover,
+.recommendation-card:hover {
+  transform: translateY(-6px);
+}
+
+.recommendations-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.match-score {
+  background: linear-gradient(90deg, var(--accent-2), var(--accent-1));
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  display: inline-block;
+  margin-bottom: 0.8rem;
+}
+
+/* =========================
+   Forms
+========================= */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius);
+  border: 1px solid #d1d5db;
+  background: transparent;
+  color: var(--text);
+  transition: var(--transition);
+}
+
+.form-control:focus {
+  border-color: var(--accent-1);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
+}
+
+/* =========================
+   Footer
+========================= */
+footer {
+  background: var(--card);
+  text-align: center;
+  padding: 2rem 1rem;
+  margin-top: 3rem;
+  color: var(--muted);
+  box-shadow: var(--shadow);
+}
+
+/* =========================
+   Responsive
+========================= */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2rem;
+  }
+  .hero p {
+    font-size: 1rem;
+  }
+}
